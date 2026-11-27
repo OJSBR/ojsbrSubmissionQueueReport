@@ -88,6 +88,9 @@ class QueueReport
     /** @var ?array<string,DashboardView> */
     protected ?array $views = null;
 
+    /** @var ?array<string,int[]> */
+    protected ?array $criteriaIds = null;
+
     /**
      * @param int[] $roleIds The editorial roles of the user in the journal
      */
@@ -415,16 +418,22 @@ class QueueReport
     }
 
     /**
-     * SQL that gives the main situation of the submission `s`, with its bindings.
+     * The ids of the submissions in progress that meet each review criterion of the
+     * main situation, worked out once per request.
      *
-     * The review situations use the criteria of the dashboard views for the whole
-     * journal (not only the user's submissions): the situation belongs to the
-     * submission, not to who looks at it.
+     * Each criterion is the collector of its dashboard view for the whole journal (not
+     * only the user's submissions: the situation belongs to the submission, not to who
+     * looks at it). Run alone, each query takes milliseconds; nested in the query of a
+     * list, some of core's criteria are evaluated again for every row, which takes
+     * seconds in a journal with thousands of submissions.
      *
-     * @return array{0:string,1:array}
+     * @return array<string,int[]>
      */
-    public function getMainSituationSql(): array
+    public function getCriteriaIds(): array
     {
+        if ($this->criteriaIds !== null) {
+            return $this->criteriaIds;
+        }
         $contextId = $this->context->getId();
         $queued = fn () => Repo::submission()->getCollector()
             ->filterByContextIds([$contextId])
@@ -438,16 +447,30 @@ class QueueReport
             DashboardView::TYPE_AWAITING_REVIEWS => $queued()->filterByAwaitingReviews(true),
             DashboardView::TYPE_NEEDS_REVIEWS => $queued()->filterByNumReviewsConfirmedLimit($this->getRequiredReviews()),
         ];
-        $ids = [];
+        $this->criteriaIds = [];
         foreach ($criteria as $id => $collector) {
-            $ids[$id] = $this->getIdsQuery($collector);
+            $this->criteriaIds[$id] = $this->getIdsQuery($collector)->distinct()->pluck('s.submission_id')->map(intval(...))->all();
         }
+        return $this->criteriaIds;
+    }
+
+    /**
+     * SQL that gives the main situation of the submission `s`, with its bindings.
+     *
+     * The review criteria are lists of ids (integers written into the query): see
+     * getCriteriaIds().
+     *
+     * @return array{0:string,1:array}
+     */
+    public function getMainSituationSql(): array
+    {
+        $ids = $this->getCriteriaIds();
 
         $sql = 'CASE';
-        $bindings = [];
-        $in = function (string $situation) use (&$sql, &$bindings, $ids) {
-            $sql .= ' WHEN s.submission_id IN (' . $ids[$situation]->toSql() . ") THEN '" . $situation . "'";
-            array_push($bindings, ...$ids[$situation]->getBindings());
+        $in = function (string $situation) use (&$sql, $ids) {
+            if ($ids[$situation]) {
+                $sql .= ' WHEN s.submission_id IN (' . implode(', ', array_map('intval', $ids[$situation])) . ") THEN '" . $situation . "'";
+            }
         };
 
         $sql .= ' WHEN s.status = ' . (int) Submission::STATUS_DECLINED . " THEN '" . DashboardView::TYPE_DECLINED . "'";
@@ -465,7 +488,7 @@ class QueueReport
         $sql .= ' WHEN s.stage_id IN (' . (int) WORKFLOW_STAGE_ID_INTERNAL_REVIEW . ', ' . (int) WORKFLOW_STAGE_ID_EXTERNAL_REVIEW . ") THEN '" . self::SITUATION_REVIEW_OTHER . "'";
         $sql .= " ELSE '" . self::SITUATION_SUBMISSION . "' END";
 
-        return [$sql, $bindings];
+        return [$sql, []];
     }
 
     /**

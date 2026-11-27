@@ -18,15 +18,17 @@
 
 namespace APP\plugins\generic\ojsbrSubmissionQueueReport\classes;
 
+use APP\author\Author;
 use APP\core\Application;
 use APP\facades\Repo;
-use APP\submission\Submission;
+use APP\publication\Publication;
 use Illuminate\Support\Facades\DB;
 use PKP\context\Context;
 use PKP\core\PKPRequest;
 use PKP\core\PKPString;
 use PKP\db\DAORegistry;
 use PKP\facades\Locale;
+use PKP\i18n\LocaleConversion;
 use PKP\submission\reviewAssignment\ReviewAssignment;
 use PKP\submission\reviewRound\ReviewRound;
 use PKP\submission\reviewRound\ReviewRoundDAO;
@@ -66,6 +68,8 @@ class ReportRows
 
     protected string $dateFormat;
 
+    protected ?string $workflowUrl = null;
+
     public function __construct(
         protected Context $context,
         protected PKPRequest $request,
@@ -87,25 +91,32 @@ class ReportRows
             return [];
         }
 
-        $submissions = Repo::submission()->getCollector()
-            ->filterByContextIds([$this->context->getId()])
-            ->filterBySubmissionIds($ids)
-            ->getMany()
+        // The submissions of the journal only, whatever ids were asked for.
+        $submissions = DB::table('submissions')
+            ->where('context_id', $this->context->getId())
+            ->whereIn('submission_id', $ids)
+            ->get()
+            ->keyBy(fn ($row) => (int) $row->submission_id)
             ->all();
 
-        $publications = [];
-        foreach ($submissions as $submission) {
-            $publication = $submission->getCurrentPublication();
-            if ($publication) {
-                $publications[$submission->getId()] = $publication;
-            }
-        }
-
-        $editors = $this->getEditors($ids);
+        $publications = $this->getPublications($submissions);
+        $editors = $this->getEditors(array_keys($submissions));
         $rounds = $this->getCurrentRounds($submissions);
         $reviews = $this->getReviews(array_map(fn (ReviewRound $round) => $round->getId(), $rounds));
-        $decisions = $this->getLastDecisions($ids);
+        $decisions = $this->getLastDecisions(array_keys($submissions));
         $issues = $this->getIssues(array_map(fn ($publication) => (int) $publication->getData('issueId'), $publications));
+
+        // The address of the workflow, built once: building it for each row reads the
+        // journal from the database each time.
+        $this->workflowUrl ??= $this->request->getDispatcher()->url(
+            $this->request,
+            Application::ROUTE_PAGE,
+            $this->context->getPath(),
+            'dashboard',
+            'editorial',
+            null,
+            ['workflowSubmissionId' => '__SUBMISSION_ID__']
+        );
 
         $rows = [];
         foreach ($ids as $id) {
@@ -130,6 +141,67 @@ class ReportRows
     }
 
     /**
+     * The current publication of each submission, with its authors (in order, with
+     * their affiliations), its categories and its DOI.
+     *
+     * @param array<int,object> $submissions Rows of the submissions, by id
+     *
+     * @return array<int,Publication> Submission id => publication
+     */
+    protected function getPublications(array $submissions): array
+    {
+        $submissionOf = [];
+        foreach ($submissions as $id => $submission) {
+            if ($submission->current_publication_id) {
+                $submissionOf[(int) $submission->current_publication_id] = $id;
+            }
+        }
+        if (!$submissionOf) {
+            return [];
+        }
+
+        $publications = BatchHydrator::where(Repo::publication()->dao, 'publication_id', array_keys($submissionOf));
+
+        $authors = BatchHydrator::where(Repo::author()->dao, 'publication_id', array_keys($publications), 'seq');
+        $affiliations = BatchHydrator::where(Repo::affiliation()->dao, 'author_id', array_keys($authors));
+        $rors = [];
+        $byAuthor = [];
+        foreach ($affiliations as $affiliation) {
+            $ror = (string) $affiliation->getRor();
+            if ($ror !== '') {
+                $rors[$ror] ??= Repo::ror()->getCollector()->filterByRor($ror)->getMany()->first();
+                $affiliation->setData('rorObject', $rors[$ror]);
+            }
+            $byAuthor[(int) $affiliation->getData('authorId')][] = $affiliation;
+        }
+        $byPublication = [];
+        foreach ($authors as $authorId => $author) {
+            $publicationId = (int) $author->getData('publicationId');
+            $author->setData('submissionLocale', $submissions[$submissionOf[$publicationId]]->locale ?? null);
+            $author->setAffiliations($byAuthor[$authorId] ?? []);
+            $byPublication[$publicationId][] = $author;
+        }
+
+        $categories = [];
+        foreach (DB::table('publication_categories')->whereIn('publication_id', array_keys($publications))->get(['publication_id', 'category_id']) as $row) {
+            $categories[(int) $row->publication_id][] = (int) $row->category_id;
+        }
+        $doiIds = array_filter(array_map(fn ($publication) => (int) $publication->getData('doiId'), $publications));
+        $dois = $doiIds ? DB::table('dois')->whereIn('doi_id', array_values($doiIds))->pluck('doi', 'doi_id')->all() : [];
+
+        $result = [];
+        foreach ($publications as $publicationId => $publication) {
+            $submissionId = $submissionOf[$publicationId];
+            $publication->setData('locale', $submissions[$submissionId]->locale);
+            $publication->setData('authors', $byPublication[$publicationId] ?? []);
+            $publication->setData('categoryIds', $categories[$publicationId] ?? []);
+            $publication->setData('doi', (string) ($dois[(int) $publication->getData('doiId')] ?? ''));
+            $result[$submissionId] = $publication;
+        }
+        return $result;
+    }
+
+    /**
      * The row of one submission.
      *
      * @param string[] $views
@@ -138,8 +210,8 @@ class ReportRows
      * @param array<int,string> $issues
      */
     protected function row(
-        Submission $submission,
-        $publication,
+        object $submission,
+        ?Publication $publication,
         string $mainSituation,
         array $views,
         array $editors,
@@ -148,8 +220,9 @@ class ReportRows
         $decision,
         array $issues
     ): array {
-        $locale = (string) $submission->getData('locale');
-        $stageId = (int) $submission->getData('stageId');
+        $locale = (string) $submission->locale;
+        $stageId = (int) $submission->stage_id;
+        $submissionId = (int) $submission->submission_id;
 
         $authors = [];
         $categories = [];
@@ -161,14 +234,14 @@ class ReportRows
             $title = $this->getTitle($publication, $locale);
             $section = $this->getSections()[(int) $publication->getData('sectionId')] ?? '';
             $issue = $issues[(int) $publication->getData('issueId')] ?? '';
-            $doi = (string) $publication->getDoi();
+            $doi = (string) $publication->getData('doi');
             $primaryContactId = (int) $publication->getData('primaryContactId');
             foreach ($publication->getData('authors') ?? [] as $author) {
                 $authors[] = [
                     'name' => $author->getFullName(true, false, $locale),
                     'email' => (string) $author->getEmail(),
                     'isPrimaryContact' => (int) $author->getId() === $primaryContactId,
-                    'affiliations' => $author->getLocalizedAffiliationNamesAsString($locale, '; '),
+                    'affiliations' => $this->getAffiliationNames($author, $locale),
                 ];
             }
             foreach ((array) $publication->getData('categoryIds') as $categoryId) {
@@ -183,20 +256,12 @@ class ReportRows
         $open = array_filter($counted, fn (array $review) => !$review['declined'] && !$review['dateCompleted'] && $review['dateDue']);
         $nextDue = $open ? min(array_column($open, 'dateDue')) : '';
 
-        $dateSubmitted = (string) $submission->getData('dateSubmitted');
-        $lastActivity = (string) $submission->getData('dateLastActivity');
+        $dateSubmitted = (string) $submission->date_submitted;
+        $lastActivity = (string) $submission->date_last_activity;
 
         return [
-            'id' => $submission->getId(),
-            'url' => $this->request->getDispatcher()->url(
-                $this->request,
-                Application::ROUTE_PAGE,
-                $this->context->getPath(),
-                'dashboard',
-                'editorial',
-                null,
-                ['workflowSubmissionId' => $submission->getId()]
-            ),
+            'id' => $submissionId,
+            'url' => str_replace('__SUBMISSION_ID__', (string) $submissionId, $this->workflowUrl),
             'title' => $title,
             'mainSituation' => $mainSituation,
             'views' => $views,
@@ -307,13 +372,7 @@ class ReportRows
             return [];
         }
 
-        $names = [];
-        $users = Repo::user()->getCollector()
-            ->filterByUserIds($assignments->pluck('user_id')->map(intval(...))->unique()->values()->all())
-            ->getMany();
-        foreach ($users as $user) {
-            $names[$user->getId()] = $user->getFullName();
-        }
+        $names = $this->getUserNames($assignments->pluck('user_id')->map(intval(...))->all());
 
         $editors = [];
         foreach ($assignments as $assignment) {
@@ -325,10 +384,66 @@ class ReportRows
     }
 
     /**
+     * The affiliation names of an author, as Author::getLocalizedAffiliationNamesAsString()
+     * gives them: the ROR name when there is one, else the name in the first language
+     * of the order the core follows (the submission's, the journal's, the site's, any).
+     *
+     * Asking the core for it loads the whole author again from the database for each
+     * affiliation (Affiliation::getDefaultLocale()), so the same order is applied here.
+     */
+    protected function getAffiliationNames(Author $author, string $locale): string
+    {
+        $precedence = array_values(array_unique(array_filter([
+            $locale,
+            $author->getData('submissionLocale'),
+            $this->context->getPrimaryLocale(),
+            $this->request->getSite()?->getPrimaryLocale(),
+        ])));
+        $names = [];
+        foreach ($author->getAffiliations() as $affiliation) {
+            $ror = $affiliation->getData('rorObject');
+            if ($ror) {
+                $names[] = (string) $ror->getLocalizedName(LocaleConversion::getIso1FromLocale($locale));
+                continue;
+            }
+            $values = (array) $affiliation->getData('name');
+            $name = '';
+            foreach ($precedence as $candidate) {
+                if (!empty($values[$candidate])) {
+                    $name = (string) $values[$candidate];
+                    break;
+                }
+            }
+            if ($name === '') {
+                $name = (string) (array_values(array_filter($values))[0] ?? '');
+            }
+            $names[] = $name;
+        }
+        return implode('; ', $names);
+    }
+
+    /**
+     * The full names of some users, as the core writes them (preferred public name, or
+     * given and family names, in the language of the interface or the first one).
+     *
+     * @param int[] $userIds
+     *
+     * @return array<int,string> User id => name
+     */
+    protected function getUserNames(array $userIds): array
+    {
+        $names = [];
+        foreach (BatchHydrator::where(Repo::user()->dao, 'user_id', $userIds) as $id => $user) {
+            $names[$id] = $user->getFullName();
+        }
+        return $names;
+    }
+
+    /**
      * The current review round of each submission: the last round of the stage the
      * submission is in, as the dashboard counts it.
      *
-     * @param Submission[] $submissions
+     * @param array<int,object> $submissions Rows of the submissions, by id
      *
      * @return array<int,ReviewRound> Submission id => round
      */
@@ -338,8 +453,8 @@ class ReportRows
             return [];
         }
         $stages = [];
-        foreach ($submissions as $submission) {
-            $stages[$submission->getId()] = (int) $submission->getData('stageId');
+        foreach ($submissions as $id => $submission) {
+            $stages[$id] = (int) $submission->stage_id;
         }
 
         /** @var ReviewRoundDAO $reviewRoundDao */
@@ -372,10 +487,10 @@ class ReportRows
             return [];
         }
         $reviews = [];
-        $assignments = Repo::reviewAssignment()->getCollector()
-            ->filterByReviewRoundIds(array_values($reviewRoundIds))
-            ->getMany();
+        $assignments = BatchHydrator::where(Repo::reviewAssignment()->dao, 'review_round_id', array_values($reviewRoundIds));
+        $names = $this->getUserNames(array_map(fn (ReviewAssignment $assignment) => (int) $assignment->getReviewerId(), $assignments));
         foreach ($assignments as $assignment) {
+            $assignment->setReviewerFullName($names[(int) $assignment->getReviewerId()] ?? '');
             $reviews[(int) $assignment->getReviewRoundId()][] = $assignment;
         }
         foreach ($reviews as &$list) {
