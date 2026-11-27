@@ -181,6 +181,23 @@ class ReportRows
             $author->setAffiliations($byAuthor[$authorId] ?? []);
             $byPublication[$publicationId][] = $author;
         }
+        // Core orders the authors by their position only. Where positions repeat (imported
+        // or migrated submissions), the order is whatever core's own query returns, so it
+        // is asked to core for those publications: the order the rest of OJS shows.
+        foreach ($byPublication as $publicationId => $list) {
+            $positions = array_map(fn ($author) => (int) $author->getData('seq'), $list);
+            if (count(array_unique($positions)) < count($positions)) {
+                $order = Repo::author()->getCollector()
+                    ->filterByPublicationIds([$publicationId])
+                    ->getQueryBuilder()
+                    ->pluck('a.author_id')
+                    ->map(intval(...))
+                    ->flip()
+                    ->all();
+                usort($list, fn ($a, $b) => ($order[$a->getId()] ?? PHP_INT_MAX) <=> ($order[$b->getId()] ?? PHP_INT_MAX));
+                $byPublication[$publicationId] = $list;
+            }
+        }
 
         $categories = [];
         foreach (DB::table('publication_categories')->whereIn('publication_id', array_keys($publications))->get(['publication_id', 'category_id']) as $row) {

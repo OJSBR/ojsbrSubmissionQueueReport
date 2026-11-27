@@ -346,16 +346,33 @@ class QueueReport
      *
      * @return array<string,int>
      */
-    public function getViewCounts(ReportFilters $filters): array
+    public function getViewCounts(ReportFilters $filters, bool $exact = false): array
     {
         $views = $this->getViews();
         if (!$views) {
             return [];
         }
 
+        // The views that are exactly one review criterion are counted from the members
+        // of that criterion (worked out once per request) that pass the filters; the
+        // others in one query, as core counts them.
+        $counts = [];
+        $inScope = null;
         $q = DB::query();
         $aliases = [];
         foreach (array_keys($views) as $i => $id) {
+            $criterion = $exact ? null : $this->getCriterionOf($views[$id]->getCollector());
+            if ($criterion !== null) {
+                $inScope ??= array_flip($this->applyFilters($this->getScopeCollector(), $filters)
+                    ->select('s.submission_id')
+                    ->reorder()
+                    ->distinct()
+                    ->pluck('s.submission_id')
+                    ->map(intval(...))
+                    ->all());
+                $counts[$id] = count(array_filter($this->getCriteriaIds()[$criterion], fn (int $submissionId) => isset($inScope[$submissionId])));
+                continue;
+            }
             $alias = 'v' . $i;
             $aliases[$alias] = $id;
             $q->selectSub(
@@ -367,12 +384,13 @@ class QueueReport
             );
         }
 
-        $row = (array) $q->first();
-        $counts = [];
+        $row = $aliases ? (array) $q->first() : [];
         foreach ($aliases as $alias => $id) {
             $counts[$id] = (int) ($row[$alias] ?? 0);
         }
-        return $counts;
+
+        // In the order of the menu.
+        return array_merge(array_fill_keys(array_keys($views), 0), $counts);
     }
 
     /**
@@ -583,40 +601,80 @@ class QueueReport
 
     /**
      * The views each submission is in, as the dashboard shows them (without the
-     * filters of the report), in one query.
+     * filters of the report).
      *
-     * @param int[] $submissionIds
+     * A view that is exactly one of the review criteria of the main situation (core's
+     * "Needs reviews", "Reviews overdue"...) takes its members from that criterion,
+     * already worked out for the request: the submissions given are within the user's
+     * access, which is the only thing such a view adds to the criterion. Every other
+     * view runs its own query, limited to the given submissions. Nested in a single
+     * query, some of core's criteria are evaluated again for every row.
+     *
+     * @param int[] $submissionIds Submissions the user may see in the report
+     * @param bool $exact Run the query of every view (for the tests)
      *
      * @return array<int,string[]> Submission id => ids of its views, in menu order
      */
-    public function getViewsOf(array $submissionIds): array
+    public function getViewsOf(array $submissionIds, bool $exact = false): array
     {
-        $views = $this->getViews();
-        if (!$submissionIds || !$views) {
-            return array_fill_keys($submissionIds, []);
-        }
-
-        $q = DB::table('submissions AS s')
-            ->select('s.submission_id')
-            ->whereIn('s.submission_id', $submissionIds);
-        $aliases = [];
-        foreach (array_keys($views) as $i => $id) {
-            $alias = 'v' . $i;
-            $aliases[$alias] = $id;
-            $ids = $this->getIdsQuery($views[$id]->getCollector());
-            $q->selectRaw('CASE WHEN s.submission_id IN (' . $ids->toSql() . ') THEN 1 ELSE 0 END AS ' . $alias, $ids->getBindings());
-        }
-
         $result = array_fill_keys($submissionIds, []);
-        foreach ($q->get() as $row) {
-            $row = (array) $row;
-            foreach ($aliases as $alias => $id) {
-                if ((int) $row[$alias] === 1) {
-                    $result[(int) $row['submission_id']][] = $id;
+        if (!$submissionIds) {
+            return $result;
+        }
+        foreach ($this->getViews() as $id => $view) {
+            $criterion = $exact ? null : $this->getCriterionOf($view->getCollector());
+            $members = $criterion !== null
+                ? array_intersect($this->getCriteriaIds()[$criterion], $submissionIds)
+                : $this->getIdsQuery($view->getCollector())
+                    ->whereIn('s.submission_id', $submissionIds)
+                    ->distinct()
+                    ->pluck('s.submission_id')
+                    ->all();
+            foreach ($members as $submissionId) {
+                if (isset($result[(int) $submissionId])) {
+                    $result[(int) $submissionId][] = $id;
                 }
             }
         }
         return $result;
+    }
+
+    /**
+     * The review criterion a view's collector is made of, when it is nothing else:
+     * submissions in progress of the journal meeting that criterion, for everybody or
+     * within the user's access (assigned to the user in an editorial role).
+     */
+    public function getCriterionOf(Collector $collector): ?string
+    {
+        $flags = [
+            DashboardView::TYPE_NEEDS_EDITOR => $collector->isUnassigned,
+            DashboardView::TYPE_REVISIONS_SUBMITTED => (bool) $collector->revisionsSubmitted,
+            DashboardView::TYPE_REVISIONS_REQUESTED => (bool) $collector->revisionsRequested,
+            DashboardView::TYPE_REVIEWS_OVERDUE => (bool) $collector->reviewsOverdue,
+            DashboardView::TYPE_REVIEWS_SUBMITTED => (bool) $collector->reviewsSubmitted,
+            DashboardView::TYPE_AWAITING_REVIEWS => (bool) $collector->awaitingReviews,
+            DashboardView::TYPE_NEEDS_REVIEWS => $collector->numReviewsConfirmedLimit === $this->getRequiredReviews(),
+        ];
+        $set = array_keys(array_filter($flags));
+        $assignedRoles = $collector->assignedWithRoles ?? [];
+        sort($assignedRoles);
+        $editorialRoles = self::EDITORIAL_ROLES;
+        sort($editorialRoles);
+        $scoped = $collector->assignedTo === null
+            ? $this->canAccessAll()
+            : $collector->assignedTo === [$this->user->getId()] && $assignedRoles === $editorialRoles && !$this->canAccessAll();
+
+        $plain = count($set) === 1
+            && ($collector->numReviewsConfirmedLimit === null || $set[0] === DashboardView::TYPE_NEEDS_REVIEWS)
+            && $collector->contextIds === [$this->context->getId()]
+            && $collector->statuses === [Submission::STATUS_QUEUED]
+            && $collector->stageIds === null && $collector->categoryIds === null && $collector->submissionIds === null
+            && $collector->daysInactive === null && !$collector->isIncomplete && !$collector->isOverdue
+            && ($collector->searchPhrase ?? '') === '' && $collector->isReviewedBy === null && $collector->reviewIds === null
+            && $collector->excludeIds === null && $collector->doiStatuses === null && $collector->hasDois === null
+            && $collector->issueIds === null && $collector->sectionIds === null;
+
+        return $plain && $scoped ? $set[0] : null;
     }
 
     /**

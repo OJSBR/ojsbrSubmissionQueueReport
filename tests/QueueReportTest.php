@@ -137,6 +137,18 @@ class QueueReportTest extends PKPTestCase
         }
     }
 
+    public function testTotalsWithFiltersAreTheTotalsOfEachViewFiltered(): void
+    {
+        foreach ($this->users() as [$context, $userId]) {
+            $report = $this->report($context, $userId);
+            foreach ([['stageIds' => ['3']], ['daysInactive' => '30'], ['dateFrom' => '2000-01-01', 'stageIds' => ['1', '3']], ['searchPhrase' => 'a']] as $query) {
+                $filters = ReportFilters::fromQuery($query, $report->getAllowedIds() + ['views' => array_keys($report->getViews()), 'canFilterAssignedTo' => $report->canAccessAll()]);
+                // Counted from the review criteria where they apply, or each view queried.
+                $this->assertSame($report->getViewCounts($filters, true), $report->getViewCounts($filters), "{$context->getPath()}/{$userId} " . json_encode($query));
+            }
+        }
+    }
+
     public function testRevisionsRequestedIsTheCurrentRoundWaitingForTheAuthor(): void
     {
         foreach ($this->usersWithRole(Role::ROLE_ID_MANAGER) as [$context, $userId]) {
@@ -201,6 +213,18 @@ class QueueReportTest extends PKPTestCase
             // A view the user does not have, asked for anyway, is not applied.
             $forced = ReportFilters::fromQuery(['views' => [DashboardView::TYPE_NEEDS_EDITOR]], $report->getAllowedIds() + ['views' => array_keys($report->getViews())]);
             $this->assertSame([], $forced->views);
+        }
+    }
+
+    public function testTheListsOfEachSubmissionAreTheListsOfTheDashboard(): void
+    {
+        foreach ($this->users() as [$context, $userId]) {
+            $report = $this->report($context, $userId);
+            $ids = array_keys($report->getPage($this->noFilters($report, array_keys($report->getViews())), 0, 100000));
+            foreach (array_chunk($ids, 100) as $chunk) {
+                // The lists taken from the review criteria are the lists each view's own query gives.
+                $this->assertSame($report->getViewsOf($chunk, true), $report->getViewsOf($chunk), "{$context->getPath()}/{$userId}");
+            }
         }
     }
 

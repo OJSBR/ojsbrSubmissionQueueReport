@@ -100,8 +100,14 @@ configure.
 - The page is a Vue component registered with `pkp.registry`, made of the core's own components
   (table, form, search, pagination, buttons) and the dashboard's `useFiltersForm`.
 - Queries go through the core collectors and Laravel's query builder only (MySQL/MariaDB and
-  PostgreSQL); the main situation is one `CASE` built from the same collectors. Authors, editors,
-  rounds, reviews, decisions and issues are loaded for the whole page at once.
+  PostgreSQL). The review criteria of the main situation are the dashboard's own collectors, run
+  once per request; the lists built from them are reused for the main situation, for the lists of
+  each submission and for the totals of the matching views (nested in one query, some of core's
+  criteria are evaluated again for every row and take seconds on a large journal).
+- Rows are loaded for the whole page at once: core objects (publications, authors, affiliations,
+  review assignments, users) are made from their rows the way core's `EntityDAO::fromRow()` makes
+  them, with one query of settings per page instead of one per object, and without what the report
+  does not show (keywords, citations...).
 - The export streams: CSV straight to the output, XLSX to a temporary sheet that is zipped at the
   end (OJS ships no spreadsheet library). Cells that would start a formula are kept as text.
 - Labels come from core where core has a short one (lists, stages, recommendations, round status,
@@ -118,6 +124,11 @@ configure.
 - **Cypress** (`cypress/tests/functional`): the menu and the Reports link; tiles against the
   `_submissions/viewsCount` endpoint the dashboard calls, for a manager and a section editor; a list
   in the table with its summary; the CSV export; a reviewer gets nothing.
+- **On a large journal** (8,638 submissions, read only): the 16 totals equal the dashboard's; the
+  rows of 150 submissions are identical to the ones built with full core objects; the report page
+  takes about 4–5 s, less than the dashboard takes for the same counts on that server; exporting
+  the 360 active submissions takes about 1 s and the whole journal, as XLSX, about 30 s with
+  31 MB of memory.
 - Checked by hand on a journal with real data: the 16 tiles against the side menu of the dashboard,
   for an admin and for a section editor; English, Spanish and Portuguese; 1366 px; the report
   inside a 375 px content area (the OJS 3.5 backend itself keeps its 336 px side menu open on
@@ -252,7 +263,11 @@ gestor e como editor de seção, cada total igual ao número que o núcleo dá a
 solicitadas* igual a uma contagem SQL independente; situações principais fechando com cada lista;
 nada repetido; editor de seção nunca recebe submissão que não é dele; só a rodada atual; filtros,
 CSV, XLSX e traduções; no navegador, quadros contra o endpoint `_submissions/viewsCount` que o painel
-chama, exportação e avaliador barrado. Conferido à mão numa revista com dados reais: os 16 quadros
+chama, exportação e avaliador barrado. Numa revista grande (8.638 submissões, só leitura): os 16 totais iguais aos do painel; as
+linhas de 150 submissões idênticas às montadas com os objetos completos do núcleo; a página do
+relatório em cerca de 4–5 s, menos do que o próprio painel leva para as mesmas contagens naquele
+servidor; exportação das 360 ativas em cerca de 1 s e da revista inteira, em XLSX, em cerca de
+30 s com 31 MB de memória. Conferido à mão numa revista com dados reais: os 16 quadros
 contra o menu lateral do painel, como administrador e como editor de seção; inglês, espanhol e
 português; 1366 px; o relatório numa área de conteúdo de 375 px (o próprio backend do OJS 3.5
 mantém o menu lateral de 336 px aberto no celular). Contraprovas: quebrar a regra de *Revisões
