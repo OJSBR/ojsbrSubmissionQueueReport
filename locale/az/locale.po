@@ -1,0 +1,471 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: OJSBR\n"
+"Language-Team: OJSBR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: az\n"
+
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.displayName"
+msgstr "Məqalələr hesabatı"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.description"
+msgstr "Redaktorlar üçün jurnalın məqalələri haqqında hesabat: redaksiya idarə panelindəki ilə eyni olan vəziyyətlər üzrə cəmlər, filtrlər, hər məqalənin redaktorları və rəyçiləri ilə onların son tarixləri, son qərar, fəaliyyətsiz keçən günlər və CSV və ya XLSX formatında ixrac."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.menu"
+msgstr "Məqalələr hesabatı"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.pageTitle"
+msgstr "Məqalələr hesabatı"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.situation"
+msgstr "Vəziyyət"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.situationDescription"
+msgstr "Redaksiya idarə panelinin siyahıları. Seçilmiş siyahılardan hər hansı birində olan məqalə göstərilir."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.dateFrom"
+msgstr "Göndərilmə tarixi (başlanğıc)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.dateTo"
+msgstr "Göndərilmə tarixi (son)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.period"
+msgstr "{$from} və {$to} arasında göndərilib"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.situation.reviewOther"
+msgstr "Dəyərləndirmədə, digər hallar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.situation.submission"
+msgstr "Göndərmə mərhələsi"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.awaitingResponse"
+msgstr "Cavab gözlənilir"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.responseOverdue"
+msgstr "Cavab gecikib"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.requestResent"
+msgstr "Sorğu yenidən göndərildi"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.declined"
+msgstr "Rədd etdi"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.accepted"
+msgstr "Qəbul etdi, dəyərləndirir"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.reviewOverdue"
+msgstr "Dəyərləndirmə gecikib"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.received"
+msgstr "Dəyərləndirmə göndərildi"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.confirmed"
+msgstr "Dəyərləndirmə redaktor tərəfindən təsdiq edildi"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.cancelled"
+msgstr "Ləğv olundu"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.id"
+msgstr "ID"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.url"
+msgstr "Ünvan"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.title"
+msgstr "Başlıq"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.mainSituation"
+msgstr "Əsas vəziyyət"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.views"
+msgstr "İdarə panelinin siyahıları"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.stage"
+msgstr "Mərhələ"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.locale"
+msgstr "Dil"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.section"
+msgstr "Bölmə"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateSubmitted"
+msgstr "Göndərilmə"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysSinceSubmission"
+msgstr "Göndərilmədən keçən günlər"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastActivity"
+msgstr "Son fəaliyyət"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysInactive"
+msgstr "Fəaliyyətsiz keçən günlər"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.authors"
+msgstr "Müəlliflər"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.emails"
+msgstr "Müəlliflərin e-poçtları"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.affiliations"
+msgstr "Qurumlar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.editors"
+msgstr "Təyin olunmuş redaktorlar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.round"
+msgstr "Dəyərləndirmə turu"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.roundStatus"
+msgstr "Turun statusu"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsRequired"
+msgstr "Tələb olunan dəyərləndirmələr"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsAccepted"
+msgstr "Qəbul edilmiş dəyərləndirmələr"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsCompleted"
+msgstr "Tamamlanmış dəyərləndirmələr"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsOverdue"
+msgstr "Gecikmiş dəyərləndirmələr"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsDeclined"
+msgstr "Rədd edilmiş dəyərləndirmələr"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.nextDue"
+msgstr "Növbəti dəyərləndirmə müddəti"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewers"
+msgstr "Rəyçilər"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastDecision"
+msgstr "Son qərar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastDecisionDate"
+msgstr "Son qərarın tarixi"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.issue"
+msgstr "Nömrə"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.categories"
+msgstr "Kateqoriyalar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.doi"
+msgstr "DOI"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewer"
+msgstr "Rəyçi"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewStatus"
+msgstr "Dəyərləndirmənin statusu"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.recommendation"
+msgstr "Təklif"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateAssigned"
+msgstr "Təyinat"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateResponseDue"
+msgstr "Cavab üçün son tarix"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateResponded"
+msgstr "Cavab"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateDue"
+msgstr "Dəyərləndirmə üçün son tarix"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateCompleted"
+msgstr "Dəyərləndirmənin göndərilməsi"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysOverdue"
+msgstr "Gecikmə günləri"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.csv"
+msgstr "CSV (Excel, LibreOffice)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.xlsx"
+msgstr "Excel iş kitabı (XLSX)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.modeSubmissions"
+msgstr "Hər məqalə üçün bir sətir"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.modeReviews"
+msgstr "Hər dəyərləndirmə üçün bir sətir (pivot cədvəllər üçün)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.filePrefix"
+msgstr "meqaleler"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.firstLine"
+msgstr "{$journal} — {$date} tarixində {$user} tərəfindən yaradılıb — {$filters}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.generatedAt"
+msgstr "{$date} tarixində yaradılıb"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.export"
+msgstr "İxrac"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportTitle"
+msgstr "Filtrlənmiş nəticələri ixrac edin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportMode"
+msgstr "Sətirlər"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportFormat"
+msgstr "Format"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.download"
+msgstr "Endirin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.cancel"
+msgstr "Ləğv edin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersApply"
+msgstr "Filtrləri tətbiq edin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersClear"
+msgstr "Filtrləri təmizləyin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersShow"
+msgstr "Filtrləri göstərin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersHide"
+msgstr "Filtrləri gizlədin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.activeFilters"
+msgstr "Aktiv filtrlər"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsHeading"
+msgstr "İdarə paneli siyahılarının cəmləri"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsOverlap"
+msgstr "İdarə panelinin yan menyusundakı rəqəmlərlə eynidir. Bir məqalə birdən çox siyahıda ola bilər, buna görə onların cəmi ümumi saya bərabər olmur. Məqalələrini görmək üçün bir siyahı seçin."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsFiltered"
+msgstr "Tətbiq olunan filtrlərlə: filtrsiz bunlar idarə panelinin yan menyusundakı rəqəmlərdir."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.openInDashboard"
+msgstr "“{$name}” siyahısını idarə panelində açın"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainHeading"
+msgstr "Əsas vəziyyət"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainDescription"
+msgstr "Hər məqalə üçün bir vəziyyət — bu ardıcıllıqla uyğun gələn birincisi, beləliklə rəqəmlərin cəmi siyahıdakı ümumi saya bərabərdir. Yalnız onun məqalələrini görmək üçün birini seçin."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainTotal"
+msgstr "Cəmi"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainClear"
+msgstr "Bütün əsas vəziyyətləri göstərin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainFilteredBy"
+msgstr "Yalnız: {$names}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.search"
+msgstr "Başlıq, müəllif və ya ID üzrə axtarış"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.columns"
+msgstr "Sütunlar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.columnsReset"
+msgstr "Standart sütunlar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.showCancelled"
+msgstr "Ləğv edilmiş dəyərləndirmələri göstərin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.loading"
+msgstr "Yüklənir…"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.loadError"
+msgstr "Hesabatı yükləmək mümkün olmadı."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.retry"
+msgstr "Yenidən cəhd edin"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.empty"
+msgstr "Bu filtrlərə uyğun məqalə yoxdur."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.total"
+msgstr "{$total} məqalə"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.pageOf"
+msgstr "Səhifə {$page} / {$lastPage}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.openWorkflow"
+msgstr "{$id} nömrəli məqalənin iş axınını yeni tabda açın"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.contact"
+msgstr "əlaqə"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.none"
+msgstr "Heç biri"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.daysAgo"
+msgstr "{$days} gün əvvəl"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.days"
+msgstr "{$days} gün"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.daysOverdue"
+msgstr "{$days} gün gecikmə"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.due"
+msgstr "dəyərləndirmə üçün son tarix {$date}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.responseDue"
+msgstr "cavab üçün son tarix {$date}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.round"
+msgstr "{$round}. tur"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsSummary"
+msgstr "Turun dəyərləndirmələri"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsAccepted"
+msgstr "qəbul edilib"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsCompleted"
+msgstr "tamamlanıb"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsOverdue"
+msgstr "gecikib"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsDeclined"
+msgstr "rədd edilib"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.noRound"
+msgstr "Dəyərləndirmədə deyil"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.noReviews"
+msgstr "Bu turda rəyçi yoxdur"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.recommendation"
+msgstr "Təklif"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.tableLabel"
+msgstr "Hesabatdakı məqalələr"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.percent"
+msgstr "{$percent}%"

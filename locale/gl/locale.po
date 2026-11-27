@@ -1,0 +1,471 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: OJSBR\n"
+"Language-Team: OJSBR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: gl\n"
+
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.displayName"
+msgstr "Informe de envíos"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.description"
+msgstr "Informe dos envíos da revista para os editores/as: totais por situación iguais aos do panel de control, filtros, editores/as e revisores/as de cada envío cos seus prazos, última decisión, días sen actividade e exportación en CSV ou XLSX."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.menu"
+msgstr "Informe de envíos"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.pageTitle"
+msgstr "Informe de envíos"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.situation"
+msgstr "Situación"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.situationDescription"
+msgstr "As listas do panel de control. Amósase o envío que estea en calquera das listas escollidas."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.dateFrom"
+msgstr "Enviados desde"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.dateTo"
+msgstr "Enviados ata"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.period"
+msgstr "Enviados entre {$from} e {$to}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.situation.reviewOther"
+msgstr "En revisión, outros casos"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.situation.submission"
+msgstr "Fase de envío"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.awaitingResponse"
+msgstr "Agardando resposta"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.responseOverdue"
+msgstr "Resposta vencida"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.requestResent"
+msgstr "Solicitude reenviada"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.declined"
+msgstr "Rexeitou"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.accepted"
+msgstr "Aceptou, revisando"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.reviewOverdue"
+msgstr "Revisión vencida"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.received"
+msgstr "Revisión enviada"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.confirmed"
+msgstr "Revisión confirmada polo editor/a"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.cancelled"
+msgstr "Cancelada"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.id"
+msgstr "ID"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.url"
+msgstr "Enderezo"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.title"
+msgstr "Título"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.mainSituation"
+msgstr "Situación principal"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.views"
+msgstr "Listas do panel de control"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.stage"
+msgstr "Fase"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.locale"
+msgstr "Idioma"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.section"
+msgstr "Sección"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateSubmitted"
+msgstr "Data de envío"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysSinceSubmission"
+msgstr "Días dende o envío"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastActivity"
+msgstr "Última actividade"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysInactive"
+msgstr "Días sen actividade"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.authors"
+msgstr "Autores/as"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.emails"
+msgstr "Correos electrónicos dos autores/as"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.affiliations"
+msgstr "Afiliacións"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.editors"
+msgstr "Editores/as asignados"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.round"
+msgstr "Rolda de revisión"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.roundStatus"
+msgstr "Estado da rolda"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsRequired"
+msgstr "Revisións requiridas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsAccepted"
+msgstr "Revisións aceptadas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsCompleted"
+msgstr "Revisións completadas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsOverdue"
+msgstr "Revisións vencidas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsDeclined"
+msgstr "Revisións rexeitadas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.nextDue"
+msgstr "Próximo prazo de revisión"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewers"
+msgstr "Revisores/as"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastDecision"
+msgstr "Última decisión"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastDecisionDate"
+msgstr "Data da última decisión"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.issue"
+msgstr "Número"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.categories"
+msgstr "Categorías"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.doi"
+msgstr "DOI"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewer"
+msgstr "Revisor/a"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewStatus"
+msgstr "Estado da revisión"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.recommendation"
+msgstr "Recomendación"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateAssigned"
+msgstr "Asignación"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateResponseDue"
+msgstr "Prazo de resposta"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateResponded"
+msgstr "Resposta"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateDue"
+msgstr "Prazo da revisión"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateCompleted"
+msgstr "Envío da revisión"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysOverdue"
+msgstr "Días de atraso"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.csv"
+msgstr "CSV (Excel, LibreOffice)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.xlsx"
+msgstr "Libro de Excel (XLSX)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.modeSubmissions"
+msgstr "Unha fila por envío"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.modeReviews"
+msgstr "Unha fila por revisión (para táboas dinámicas)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.filePrefix"
+msgstr "envios"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.firstLine"
+msgstr "{$journal} — xerado o {$date} por {$user} — {$filters}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.generatedAt"
+msgstr "Xerado o {$date}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.export"
+msgstr "Exportar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportTitle"
+msgstr "Exportar o filtrado"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportMode"
+msgstr "Filas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportFormat"
+msgstr "Formato"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.download"
+msgstr "Descargar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.cancel"
+msgstr "Cancelar"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersApply"
+msgstr "Aplicar filtros"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersClear"
+msgstr "Limpar filtros"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersShow"
+msgstr "Amosar filtros"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersHide"
+msgstr "Ocultar filtros"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.activeFilters"
+msgstr "Filtros activos"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsHeading"
+msgstr "Totais das listas do panel de control"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsOverlap"
+msgstr "Os mesmos números do menú lateral do panel de control. Un envío pode estar en máis dunha lista, por iso non suman o total. Escolla unha lista para ver os seus envíos."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsFiltered"
+msgstr "Cos filtros activos: sen eles, estes son os números do menú lateral do panel de control."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.openInDashboard"
+msgstr "Abrir \"{$name}\" no panel de control"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainHeading"
+msgstr "Situación principal"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainDescription"
+msgstr "Unha situación por envío, a primeira que corresponda nesta orde, para que os números sumen o total listado. Escolla unha para ver só os seus envíos."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainTotal"
+msgstr "Total"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainClear"
+msgstr "Amosar todas as situacións principais"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainFilteredBy"
+msgstr "Só: {$names}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.search"
+msgstr "Procurar título, autor/a ou ID"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.columns"
+msgstr "Columnas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.columnsReset"
+msgstr "Columnas predeterminadas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.showCancelled"
+msgstr "Amosar revisións canceladas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.loading"
+msgstr "Cargando…"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.loadError"
+msgstr "Non se puido cargar o informe."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.retry"
+msgstr "Tentar de novo"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.empty"
+msgstr "Ningún envío con estes filtros."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.total"
+msgstr "{$total} envíos"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.pageOf"
+msgstr "Páxina {$page} de {$lastPage}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.openWorkflow"
+msgstr "Abrir o fluxo de traballo do envío {$id} nunha nova lapela"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.contact"
+msgstr "contacto"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.none"
+msgstr "Ningún"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.daysAgo"
+msgstr "hai {$days} días"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.days"
+msgstr "{$days} días"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.daysOverdue"
+msgstr "{$days} días de atraso"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.due"
+msgstr "prazo da revisión {$date}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.responseDue"
+msgstr "prazo de resposta {$date}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.round"
+msgstr "Rolda {$round}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsSummary"
+msgstr "Revisións da rolda"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsAccepted"
+msgstr "aceptadas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsCompleted"
+msgstr "completadas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsOverdue"
+msgstr "vencidas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsDeclined"
+msgstr "rexeitadas"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.noRound"
+msgstr "Fóra de revisión"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.noReviews"
+msgstr "Ningún revisor/a nesta rolda"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.recommendation"
+msgstr "Recomendación"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.tableLabel"
+msgstr "Envíos do informe"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.percent"
+msgstr "{$percent} %"

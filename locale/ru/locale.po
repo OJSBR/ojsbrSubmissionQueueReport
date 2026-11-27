@@ -1,0 +1,471 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: OJSBR\n"
+"Language-Team: OJSBR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.displayName"
+msgstr "Отчёт о материалах"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.description"
+msgstr "Отчёт о материалах журнала для редакторов: итоги по состояниям, совпадающие с редакционной панелью, фильтры, редакторы и рецензенты каждого материала со сроками, последнее решение, дни без активности и экспорт в CSV или XLSX."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.menu"
+msgstr "Отчёт о материалах"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.pageTitle"
+msgstr "Отчёт о материалах"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.situation"
+msgstr "Состояние"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.situationDescription"
+msgstr "Списки редакционной панели. Показывается материал, находящийся в любом из выбранных списков."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.dateFrom"
+msgstr "Отправлены с"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.dateTo"
+msgstr "Отправлены по"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.period"
+msgstr "Отправлены с {$from} по {$to}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.situation.reviewOther"
+msgstr "На рецензировании, другие случаи"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.situation.submission"
+msgstr "Этап отправки"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.awaitingResponse"
+msgstr "Ожидается ответ"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.responseOverdue"
+msgstr "Ответ просрочен"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.requestResent"
+msgstr "Запрос отправлен повторно"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.declined"
+msgstr "Отклонено"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.accepted"
+msgstr "Принято, идёт рецензирование"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.reviewOverdue"
+msgstr "Рецензия просрочена"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.received"
+msgstr "Рецензия отправлена"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.confirmed"
+msgstr "Рецензия подтверждена редактором"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.cancelled"
+msgstr "Отменено"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.id"
+msgstr "ID"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.url"
+msgstr "Адрес"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.title"
+msgstr "Заголовок"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.mainSituation"
+msgstr "Основное состояние"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.views"
+msgstr "Списки панели"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.stage"
+msgstr "Этап"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.locale"
+msgstr "Язык"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.section"
+msgstr "Раздел"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateSubmitted"
+msgstr "Отправлен"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysSinceSubmission"
+msgstr "Дней с момента отправки"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastActivity"
+msgstr "Последняя активность"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysInactive"
+msgstr "Дней без активности"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.authors"
+msgstr "Авторы"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.emails"
+msgstr "E-mail авторов"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.affiliations"
+msgstr "Организации"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.editors"
+msgstr "Назначенные редакторы"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.round"
+msgstr "Раунд рецензирования"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.roundStatus"
+msgstr "Статус раунда"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsRequired"
+msgstr "Требуется рецензий"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsAccepted"
+msgstr "Принято рецензий"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsCompleted"
+msgstr "Завершено рецензий"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsOverdue"
+msgstr "Просрочено рецензий"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsDeclined"
+msgstr "Отклонено рецензий"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.nextDue"
+msgstr "Ближайший срок рецензии"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewers"
+msgstr "Рецензенты"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastDecision"
+msgstr "Последнее решение"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastDecisionDate"
+msgstr "Дата последнего решения"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.issue"
+msgstr "Выпуск"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.categories"
+msgstr "Категории"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.doi"
+msgstr "DOI"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewer"
+msgstr "Рецензент"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewStatus"
+msgstr "Статус рецензии"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.recommendation"
+msgstr "Рекомендация"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateAssigned"
+msgstr "Назначен"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateResponseDue"
+msgstr "Срок ответа"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateResponded"
+msgstr "Ответ"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateDue"
+msgstr "Срок рецензии"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateCompleted"
+msgstr "Рецензия отправлена"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysOverdue"
+msgstr "Дней просрочки"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.csv"
+msgstr "CSV (Excel, LibreOffice)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.xlsx"
+msgstr "Книга Excel (XLSX)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.modeSubmissions"
+msgstr "Одна строка на материал"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.modeReviews"
+msgstr "Одна строка на рецензию (для сводных таблиц)"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.filePrefix"
+msgstr "materialy"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.firstLine"
+msgstr "{$journal} — сформировано {$date} пользователем {$user} — {$filters}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.generatedAt"
+msgstr "Сформировано {$date}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.export"
+msgstr "Экспорт"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportTitle"
+msgstr "Экспортировать отфильтрованное"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportMode"
+msgstr "Строки"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportFormat"
+msgstr "Формат"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.download"
+msgstr "Скачать"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.cancel"
+msgstr "Отменить"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersApply"
+msgstr "Применить фильтры"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersClear"
+msgstr "Очистить фильтры"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersShow"
+msgstr "Показать фильтры"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersHide"
+msgstr "Скрыть фильтры"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.activeFilters"
+msgstr "Активные фильтры"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsHeading"
+msgstr "Итоги по спискам панели"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsOverlap"
+msgstr "Те же числа, что в боковом меню панели. Материал может быть в нескольких списках, поэтому числа не складываются в общий итог. Выберите список, чтобы увидеть его материалы."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsFiltered"
+msgstr "С применёнными фильтрами: без них это числа из бокового меню панели."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.openInDashboard"
+msgstr "Открыть «{$name}» на панели"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainHeading"
+msgstr "Основное состояние"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainDescription"
+msgstr "Одно состояние на материал — первое подходящее в этом порядке, поэтому числа складываются в показанный итог. Выберите одно, чтобы увидеть только его материалы."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainTotal"
+msgstr "Всего"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainClear"
+msgstr "Показать все основные состояния"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainFilteredBy"
+msgstr "Только: {$names}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.search"
+msgstr "Поиск по заголовку, автору или ID"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.columns"
+msgstr "Столбцы"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.columnsReset"
+msgstr "Столбцы по умолчанию"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.showCancelled"
+msgstr "Показать отменённые рецензии"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.loading"
+msgstr "Идёт загрузка…"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.loadError"
+msgstr "Не удалось загрузить отчёт."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.retry"
+msgstr "Попробовать снова"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.empty"
+msgstr "Нет материалов, соответствующих этим фильтрам."
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.total"
+msgstr "Материалов: {$total}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.pageOf"
+msgstr "Страница {$page} из {$lastPage}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.openWorkflow"
+msgstr "Открыть рабочий поток материала {$id} в новой вкладке"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.contact"
+msgstr "контакт"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.none"
+msgstr "Нет"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.daysAgo"
+msgstr "{$days} дней назад"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.days"
+msgstr "{$days} дней"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.daysOverdue"
+msgstr "просрочено на {$days} дней"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.due"
+msgstr "срок рецензии {$date}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.responseDue"
+msgstr "срок ответа {$date}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.round"
+msgstr "Раунд {$round}"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsSummary"
+msgstr "Рецензии раунда"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsAccepted"
+msgstr "принято"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsCompleted"
+msgstr "завершено"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsOverdue"
+msgstr "просрочено"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsDeclined"
+msgstr "отклонено"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.noRound"
+msgstr "Не на рецензировании"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.noReviews"
+msgstr "В этом раунде нет рецензентов"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.recommendation"
+msgstr "Рекомендация"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.tableLabel"
+msgstr "Материалы отчёта"
+
+#, fuzzy
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.percent"
+msgstr "{$percent}%"

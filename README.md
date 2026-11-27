@@ -135,6 +135,16 @@ configure.
   phones). Counter-tests: breaking the *Revisions requested* rule or the section editor's access
   makes the tests fail.
 
+## Languages
+
+38 languages, every locale of OJS 3.5: Arabic, Azerbaijani, Basque, Bulgarian, Catalan, Chinese
+(Simplified), Czech, Danish, Dutch, English, Finnish, French (France and Canada), Galician, Georgian,
+German, Greek, Hungarian, Armenian, Indonesian, Italian, Japanese, Macedonian, Malay, Norwegian Bokmål,
+Persian, Polish, Portuguese (Brazil and Portugal), Romanian, Russian, Serbian (Latin), Slovenian,
+Spanish, Swedish, Turkish, Ukrainian and Vietnamese. English, Portuguese (Brazil and Portugal) and
+Spanish are reviewed by the team; the others follow the terms of OJS itself in each language and are
+marked *fuzzy* until a speaker reviews them (OJS shows them all the same). Corrections are welcome.
+
 ## Credits & authorship
 
 - **Developed and maintained by** [OJSBR](https://ojsbr.com).
@@ -275,7 +285,9 @@ solicitadas* ou o acesso do editor de seção faz os testes falharem.
 
 ### Idiomas
 
-Interface em português (Brasil), inglês e espanhol, revisados.
+38 idiomas, todos os do OJS 3.5. Inglês, português (Brasil e Portugal) e espanhol são revisados pela
+equipe; os demais seguem os termos do próprio OJS em cada idioma e ficam marcados como *fuzzy* até um
+falante revisar (o OJS mostra do mesmo jeito). Correções são bem-vindas.
 
 ### Créditos e autoria
 

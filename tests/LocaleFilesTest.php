@@ -21,7 +21,13 @@ use PKP\tests\PKPTestCase;
 class LocaleFilesTest extends PKPTestCase
 {
     /** Locale codes shipped by the plugin, as OJS 3.5 names them. */
-    public const LOCALES = ['en', 'es', 'pt_BR'];
+    public const LOCALES = [
+        'ar', 'az', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'eu', 'fa', 'fi', 'fr', 'fr_CA', 'gl', 'hu', 'hy', 'id',
+        'it', 'ja', 'ka', 'mk', 'ms', 'nb_NO', 'nl', 'pl', 'pt', 'pt_BR', 'ro', 'ru', 'sl', 'sr_Latn', 'sv', 'tr', 'uk', 'vi', 'zh_Hans',
+    ];
+
+    /** Locales reviewed in full by the team. */
+    public const REVIEWED = ['en', 'es', 'pt', 'pt_BR'];
 
     public const MASTER = 'en';
 
@@ -110,12 +116,13 @@ class LocaleFilesTest extends PKPTestCase
         return false;
     }
 
-    public function testNoTranslationIsEmptyOrFuzzy(): void
+    public function testNoTranslationIsEmptyAndOnlyUnreviewedOnesAreFuzzy(): void
     {
         foreach ($this->files() as $locale => $file) {
             foreach ($file->entries as $key => $value) {
                 $this->assertNotEmpty(trim($value), "Empty translation for {$key} in {$locale}.");
-                $this->assertFalse($file->fuzzy[$key] ?? false, "Fuzzy entry {$key} in {$locale}.");
+                // Reviewed by the team in full; the others are translated and flagged for a speaker.
+                $this->assertSame(!in_array($locale, self::REVIEWED, true), $file->fuzzy[$key] ?? false, "Fuzzy flag of {$key} in {$locale}.");
             }
         }
     }

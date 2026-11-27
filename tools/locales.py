@@ -1,6 +1,11 @@
-# Writes locale/<code>/locale.po from the table below (en, pt_BR, es).
+# Writes locale/<code>/locale.po from the table below (en, pt_BR, es) and from
+# tools/translations/<code>.json (the other 35 locales of OJS 3.5, one {key: text} per file).
+# Locales not in REVIEWED are marked fuzzy: translated, waiting for a speaker to review them
+# (OJS shows fuzzy entries as any other).
 # Usage: python3 tools/locales.py
+import json
 import os
+import re
 
 P = 'plugins.generic.ojsbrSubmissionQueueReport.'
 S = [
@@ -140,11 +145,23 @@ msgstr ""
 def q(text):
     return '"' + text.replace('\\', '\\\\').replace('"', '\\"') + '"'
 
-base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'locale')
-for i, code in ((1, 'en'), (2, 'pt_BR'), (3, 'es')):
+here = os.path.dirname(os.path.abspath(__file__))
+base = os.path.join(here, '..', 'locale')
+tables = {code: {row[0]: row[i] for row in S} for i, code in ((1, 'en'), (2, 'pt_BR'), (3, 'es'))}
+folder = os.path.join(here, 'translations')
+for name in sorted(os.listdir(folder)):
+    tables[name[:-5]] = json.load(open(os.path.join(folder, name), encoding='utf-8'))
+
+REVIEWED = ('en', 'pt_BR', 'es', 'pt')
+placeholders = lambda text: sorted(re.findall(r'\{\$\w+\}', text))
+for code, table in tables.items():
+    assert set(table) == set(tables['en']), code + ': keys differ from en'
+    for key, text in table.items():
+        assert text.strip(), code + ': empty ' + key
+        assert placeholders(text) == placeholders(tables['en'][key]), code + ': placeholders of ' + key
     os.makedirs(os.path.join(base, code), exist_ok=True)
     out = HEADER.format(code=code)
     for row in S:
-        out += '\nmsgid ' + q(P + row[0]) + '\nmsgstr ' + q(row[i]) + '\n'
+        out += '\n' + ('' if code in REVIEWED else '#, fuzzy\n') + 'msgid ' + q(P + row[0]) + '\nmsgstr ' + q(table[row[0]]) + '\n'
     open(os.path.join(base, code, 'locale.po'), 'w', encoding='utf-8').write(out)
-print(len(S), 'keys')
+print(len(S), 'keys,', len(tables), 'locales')
