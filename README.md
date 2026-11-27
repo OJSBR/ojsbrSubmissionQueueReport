@@ -1,10 +1,10 @@
 # Submission Queue Report — OJS plugin
 
 [![OJS](https://img.shields.io/badge/OJS-3.5-brightgreen)](https://pkp.sfu.ca/ojs/)
-[![Version](https://img.shields.io/badge/version-5.0.0.0-blue)](version.xml)
+[![Version](https://img.shields.io/badge/version-5.0.1.1-blue)](version.xml)
 [![License](https://img.shields.io/badge/license-GPL--3.0-lightgrey)](LICENSE)
 
-**⬇️ Install package:** [OJS 3.5](https://github.com/OJSBR/ojsbrSubmissionQueueReport/releases/download/5.0.0.0/ojsbrSubmissionQueueReport-5.0.0.0.tar.gz) — or browse all [Releases](../../releases).
+**⬇️ Install package:** [OJS 3.5](https://github.com/OJSBR/ojsbrSubmissionQueueReport/releases/download/5.0.1.1/ojsbrSubmissionQueueReport-5.0.1.1.tar.gz) — or browse all [Releases](../../releases).
 
 > **Built on the work of others.** The lists, their criteria and the filters are the ones of
 > the **editorial dashboard of OJS 3.5** by the [Public Knowledge Project](https://pkp.sfu.ca)
@@ -28,12 +28,15 @@ filtered.
 
 | Application | Branch | Plugin release |
 |-------------|--------|----------------|
-| OJS 3.5.x | [`stable-3_5_0`](../../tree/stable-3_5_0) *(default)* | 5.0.0.0 |
+| OJS 3.5.x | [`stable-3_5_0`](../../tree/stable-3_5_0) *(default)* | 5.0.1.1 |
 
 The first number of the version names the OJS line (5 = OJS 3.5). OMP and OPS are not supported:
 OMP has other review lists and OPS has no review stage.
 
 ## What the editor gets
+
+![The submission report: totals of the dashboard lists, main situation and the table](docs/report-en.png)
+<sub>Fictitious data, on the OJS test installation of OJSBR.</sub>
 
 **Statistics › Submission report** (also listed in *Statistics › Reports*, where the report of OJS
 3.3 was; assistants, who have no Statistics menu, get it as a menu item of its own):
@@ -65,6 +68,8 @@ OMP has other review lists and OPS has no review stage.
   with filter buttons), with **one row per submission** or **one row per review** (for pivot
   tables). It exports exactly what is filtered, every page; the first line says which journal,
   when, by whom and with which filters.
+
+<img src="docs/export-en.png" alt="Export: one row per submission or per review, CSV or XLSX" width="520">
 
 ### The numbers are the dashboard's numbers
 
@@ -199,12 +204,15 @@ filtrado.
 
 | Aplicação | Branch | Release do plugin |
 |-----------|--------|-------------------|
-| OJS 3.5.x | `stable-3_5_0` *(padrão)* | 5.0.0.0 |
+| OJS 3.5.x | `stable-3_5_0` *(padrão)* | 5.0.1.1 |
 
 O primeiro número da versão indica a linha do OJS (5 = OJS 3.5). OMP e OPS não são atendidos: o OMP
 tem outras listas de avaliação e o OPS não tem etapa de avaliação.
 
 ### O que o editor ganha
+
+![O relatório de submissões: totais das listas do painel, situação principal e a tabela](docs/report-pt_BR.png)
+<sub>Dados fictícios, na instalação de teste do OJS da OJSBR.</sub>
 
 **Estatísticas › Relatório de submissões** (também listado em *Estatísticas › Relatórios*, onde
 ficava o relatório do OJS 3.3; o assistente, que não tem o menu Estatísticas, recebe um item de
@@ -239,6 +247,8 @@ menu próprio):
   congelado e com botões de filtro), com **uma linha por submissão** ou **uma linha por avaliação**
   (para tabela dinâmica). Exporta exatamente o que está filtrado, todas as páginas; a primeira linha
   diz a revista, quando, quem gerou e com quais filtros.
+
+<img src="docs/export-pt_BR.png" alt="Exportação: uma linha por submissão ou por avaliação, CSV ou XLSX" width="520">
 
 ### Os números são os do painel
 
