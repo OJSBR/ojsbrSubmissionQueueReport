@@ -162,17 +162,12 @@ class QueueReportHandler extends Handler
         $writer->open($fileName);
         $writer->row([$this->describeFilters($request, $filters, $rowsBuilder)]);
         $writer->row($export->getHeader($mode), true);
-        for ($offset = 0; ; $offset += self::EXPORT_CHUNK) {
-            $page = $report->getPage($filters, $offset, self::EXPORT_CHUNK);
-            if (!$page) {
-                break;
-            }
-            $rows = $rowsBuilder->build($page, $report->getViewsOf(array_keys($page)));
+        // The order is taken once, then the submissions are loaded a chunk at a time.
+        foreach (array_chunk($report->getOrderedIds($filters), self::EXPORT_CHUNK) as $ids) {
+            $page = $report->getMainSituationsOf($ids);
+            $rows = $rowsBuilder->build($page, $report->getViewsOf($ids));
             foreach ($export->getRows($rows, $mode) as $cells) {
                 $writer->row($cells);
-            }
-            if (count($page) < self::EXPORT_CHUNK) {
-                break;
             }
         }
         $writer->close($fileName);

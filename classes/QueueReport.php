@@ -499,25 +499,61 @@ class QueueReport
      * A page of the selected submissions: their ids, in the chosen order, with their
      * main situation.
      *
+     * The page is chosen first, by id only; the main situation is then worked out for
+     * those few submissions, not for every selected one.
+     *
      * @return array<int,string> Submission id => main situation
      */
     public function getPage(ReportFilters $filters, int $offset, int $count): array
     {
-        [$case, $bindings] = $this->getMainSituationSql();
+        return $this->getMainSituationsOf($this->getOrderedIds($filters, $offset, $count));
+    }
+
+    /**
+     * The ids of the selected submissions, in the chosen order (all of them, or a slice).
+     *
+     * @return int[]
+     */
+    public function getOrderedIds(ReportFilters $filters, int $offset = 0, ?int $count = null): array
+    {
         $direction = $filters->orderDirection === Collector::ORDER_DIR_ASC ? 'asc' : 'desc';
-        $rows = $this->getSelectedQuery($filters)
+        $q = $this->getSelectedQuery($filters)
             ->select(['s.submission_id'])
-            ->selectRaw($case . ' AS main_situation', $bindings)
             ->reorder()
             ->orderBy(ReportFilters::ORDER_BY[$filters->orderBy], $direction)
-            ->orderBy('s.submission_id', $direction)
-            ->offset($offset)
-            ->limit($count)
-            ->get();
+            ->orderBy('s.submission_id', $direction);
+        if ($offset) {
+            $q->offset($offset);
+        }
+        if ($count !== null) {
+            $q->limit($count);
+        }
+        return $q->pluck('s.submission_id')->map(intval(...))->all();
+    }
+
+    /**
+     * The main situation of some submissions, in the given order.
+     *
+     * @param int[] $submissionIds
+     *
+     * @return array<int,string> Submission id => main situation
+     */
+    public function getMainSituationsOf(array $submissionIds): array
+    {
+        if (!$submissionIds) {
+            return [];
+        }
+        [$case, $bindings] = $this->getMainSituationSql();
+        $situations = DB::table('submissions AS s')
+            ->whereIn('s.submission_id', $submissionIds)
+            ->select('s.submission_id')
+            ->selectRaw($case . ' AS main_situation', $bindings)
+            ->pluck('main_situation', 'submission_id')
+            ->all();
 
         $page = [];
-        foreach ($rows as $row) {
-            $page[(int) $row->submission_id] = (string) $row->main_situation;
+        foreach ($submissionIds as $id) {
+            $page[$id] = (string) ($situations[$id] ?? self::SITUATION_SUBMISSION);
         }
         return $page;
     }
