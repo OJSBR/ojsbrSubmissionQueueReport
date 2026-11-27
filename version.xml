@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE version SYSTEM "../../../lib/pkp/dtd/pluginVersion.dtd">
+
+<!--
+  * version.xml
+  *
+  * Copyright (c) 2026 OJSBR (https://ojsbr.com)
+  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+  *
+  * Plugin version information.
+  -->
+<version>
+	<application>ojsbrSubmissionQueueReport</application>
+	<type>plugins.generic</type>
+	<release>5.0.0.0</release>
+	<date>2026-11-26</date>
+	<lazy-load>1</lazy-load>
+	<class>OjsbrSubmissionQueueReportPlugin</class>
+</version>

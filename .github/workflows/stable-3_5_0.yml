@@ -1,0 +1,30 @@
+on: [push, pull_request]
+name: ojsbrSubmissionQueueReport
+jobs:
+  ojsbrSubmissionQueueReport:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - application: ojs
+            php-version: 8.3
+            database: mysql
+          - application: ojs
+            php-version: 8.3
+            database: pgsql
+          - application: ojs
+            php-version: 8.2
+            database: mysql
+          - application: ojs
+            php-version: 8.2
+            database: pgsql
+    name: ojsbrSubmissionQueueReport (${{ matrix.application }}, ${{ matrix.php-version }}, ${{ matrix.database }})
+    steps:
+      - uses: pkp/pkp-github-actions@v1
+        with:
+          node_version: 20
+          branch: 'stable-3_5_0'
+          repository: pkp
+          plugin: true
+          dataset_inject: true

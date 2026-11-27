@@ -1,0 +1,356 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: OJSBR\n"
+"Language-Team: OJSBR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.displayName"
+msgstr "Informe de envíos"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.description"
+msgstr "Informe de los envíos de la revista para los editores/as: totales por situación iguales a los del panel editorial, filtros, editores/as y revisores/as de cada envío con sus plazos, última decisión, días sin actividad y exportación en CSV o XLSX."
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.menu"
+msgstr "Informe de envíos"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.pageTitle"
+msgstr "Informe de envíos"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.situation"
+msgstr "Situación"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.situationDescription"
+msgstr "Las listas del panel editorial. Se muestra el envío que esté en cualquiera de las listas elegidas."
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.dateFrom"
+msgstr "Enviados desde"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.dateTo"
+msgstr "Enviados hasta"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.filter.period"
+msgstr "Enviados entre {$from} y {$to}"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.situation.reviewOther"
+msgstr "En revisión, otros casos"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.situation.submission"
+msgstr "Etapa de envío"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.awaitingResponse"
+msgstr "Esperando respuesta"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.responseOverdue"
+msgstr "Respuesta vencida"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.requestResent"
+msgstr "Invitación reenviada"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.declined"
+msgstr "Rechazó"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.accepted"
+msgstr "Aceptó, revisando"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.reviewOverdue"
+msgstr "Revisión vencida"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.received"
+msgstr "Revisión enviada"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.confirmed"
+msgstr "Revisión confirmada por el editor/a"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.reviewStatus.cancelled"
+msgstr "Cancelada"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.id"
+msgstr "ID"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.url"
+msgstr "Dirección"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.title"
+msgstr "Título"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.mainSituation"
+msgstr "Situación principal"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.views"
+msgstr "Listas del panel"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.stage"
+msgstr "Etapa"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.locale"
+msgstr "Idioma"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.section"
+msgstr "Sección"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateSubmitted"
+msgstr "Envío"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysSinceSubmission"
+msgstr "Días desde el envío"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastActivity"
+msgstr "Última actividad"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysInactive"
+msgstr "Días sin actividad"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.authors"
+msgstr "Autoría"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.emails"
+msgstr "Correos de los autores/as"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.affiliations"
+msgstr "Afiliaciones"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.editors"
+msgstr "Editores/as asignados"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.round"
+msgstr "Ronda de revisión"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.roundStatus"
+msgstr "Estado de la ronda"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsRequired"
+msgstr "Revisiones requeridas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsAccepted"
+msgstr "Revisiones aceptadas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsCompleted"
+msgstr "Revisiones completadas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsOverdue"
+msgstr "Revisiones vencidas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewsDeclined"
+msgstr "Revisiones rechazadas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.nextDue"
+msgstr "Próximo plazo de revisión"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewers"
+msgstr "Revisores/as"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastDecision"
+msgstr "Última decisión"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.lastDecisionDate"
+msgstr "Fecha de la última decisión"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.issue"
+msgstr "Número"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.categories"
+msgstr "Categorías"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.doi"
+msgstr "DOI"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewer"
+msgstr "Revisor/a"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.reviewStatus"
+msgstr "Estado de la revisión"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.recommendation"
+msgstr "Recomendación"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateAssigned"
+msgstr "Asignación"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateResponseDue"
+msgstr "Plazo de respuesta"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateResponded"
+msgstr "Respuesta"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateDue"
+msgstr "Plazo de la revisión"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.dateCompleted"
+msgstr "Envío de la revisión"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.column.daysOverdue"
+msgstr "Días de retraso"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.csv"
+msgstr "CSV (Excel, LibreOffice)"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.xlsx"
+msgstr "Libro de Excel (XLSX)"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.modeSubmissions"
+msgstr "Una fila por envío"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.modeReviews"
+msgstr "Una fila por revisión (para tablas dinámicas)"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.filePrefix"
+msgstr "envios"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.export.firstLine"
+msgstr "{$journal} — generado el {$date} por {$user} — {$filters}"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.generatedAt"
+msgstr "Generado el {$date}"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.export"
+msgstr "Exportar"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportTitle"
+msgstr "Exportar lo filtrado"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportMode"
+msgstr "Filas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.exportFormat"
+msgstr "Formato"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.download"
+msgstr "Descargar"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.cancel"
+msgstr "Cancelar"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersApply"
+msgstr "Aplicar filtros"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersClear"
+msgstr "Limpiar filtros"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersShow"
+msgstr "Mostrar filtros"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.filtersHide"
+msgstr "Ocultar filtros"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.activeFilters"
+msgstr "Filtros activos"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsHeading"
+msgstr "Totales de las listas del panel"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsOverlap"
+msgstr "Los mismos números del menú lateral del panel. Un envío puede estar en más de una lista, por eso no suman el total. Elija una lista para ver sus envíos."
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.viewsFiltered"
+msgstr "Con los filtros activos: sin ellos, estos son los números del menú lateral del panel."
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.openInDashboard"
+msgstr "Abrir \"{$name}\" en el panel"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainHeading"
+msgstr "Situación principal"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainDescription"
+msgstr "Una situación por envío, la primera que corresponda en este orden, para que los números sumen el total listado. Elija una para ver solo sus envíos."
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainTotal"
+msgstr "Total"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainClear"
+msgstr "Mostrar todas las situaciones principales"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.mainFilteredBy"
+msgstr "Solo: {$names}"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.search"
+msgstr "Buscar título, autor/a o ID"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.columns"
+msgstr "Columnas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.columnsReset"
+msgstr "Columnas predeterminadas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.showCancelled"
+msgstr "Mostrar revisiones canceladas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.loading"
+msgstr "Cargando…"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.loadError"
+msgstr "No se pudo cargar el informe."
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.retry"
+msgstr "Intentar de nuevo"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.empty"
+msgstr "Ningún envío con estos filtros."
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.total"
+msgstr "{$total} envíos"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.pageOf"
+msgstr "Página {$page} de {$lastPage}"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.openWorkflow"
+msgstr "Abrir el flujo del envío {$id} en una pestaña nueva"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.contact"
+msgstr "contacto"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.none"
+msgstr "Ninguno"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.daysAgo"
+msgstr "hace {$days} días"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.days"
+msgstr "{$days} días"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.daysOverdue"
+msgstr "{$days} días de retraso"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.due"
+msgstr "plazo de la revisión {$date}"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.responseDue"
+msgstr "plazo de respuesta {$date}"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.round"
+msgstr "Ronda {$round}"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsSummary"
+msgstr "Revisiones de la ronda"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsAccepted"
+msgstr "aceptadas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsCompleted"
+msgstr "completadas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsOverdue"
+msgstr "vencidas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.reviewsDeclined"
+msgstr "rechazadas"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.noRound"
+msgstr "Fuera de revisión"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.noReviews"
+msgstr "Ningún revisor/a en esta ronda"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.recommendation"
+msgstr "Recomendación"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.tableLabel"
+msgstr "Envíos del informe"
+
+msgid "plugins.generic.ojsbrSubmissionQueueReport.ui.percent"
+msgstr "{$percent}%"
