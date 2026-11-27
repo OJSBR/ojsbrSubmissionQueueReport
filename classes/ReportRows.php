@@ -368,7 +368,11 @@ class ReportRows
 
     /**
      * The editors assigned to each submission (managers and section editors, the roles
-     * "Needs editor" looks for), by name.
+     * "Needs editor" looks for), by name, as the participants of the workflow show them:
+     * only assignments whose user group takes part in the current stage of the submission.
+     * OJS keeps assignments of groups without that stage (for example a journal manager
+     * assigned automatically to every new submission while "Journal manager" has no stage),
+     * and the workflow hides them, so the report must not list them either.
      *
      * @param int[] $submissionIds
      *
@@ -378,6 +382,11 @@ class ReportRows
     {
         $assignments = DB::table('stage_assignments AS sa')
             ->join('user_groups AS ug', 'ug.user_group_id', '=', 'sa.user_group_id')
+            ->join('submissions AS s', 's.submission_id', '=', 'sa.submission_id')
+            ->join('user_group_stage AS ugs', function ($join) {
+                $join->on('ugs.user_group_id', '=', 'sa.user_group_id')
+                    ->on('ugs.stage_id', '=', 's.stage_id');
+            })
             ->whereIn('sa.submission_id', $submissionIds)
             ->whereIn('ug.role_id', QueueReport::EDITOR_ROLES)
             ->select(['sa.submission_id', 'sa.user_id'])
